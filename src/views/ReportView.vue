@@ -21,7 +21,7 @@ onMounted(async()=>{
 
     myChart.setOption({
             title: {
-                text: 'ECharts 入门示例'
+                text: '入门示例'
             },
             tooltip: {},
             xAxis: {
