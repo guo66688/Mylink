@@ -6,7 +6,7 @@ export const useStore = defineStore('main', ()=>{
     //变量
     const user = ref(sessionStorage.getItem('user') ? JSON.parse(sessionStorage.getItem('user')) : {})
     const token = ref(sessionStorage.getItem('token') ? sessionStorage.getItem('token') : '')
-    const isLogin = ref(false)
+    const isLogin = ref(!!sessionStorage.getItem('token'))
     //计算属性
 
 
@@ -15,7 +15,7 @@ export const useStore = defineStore('main', ()=>{
       isLogin.value = false
       user.value = {}
       token.value = ''
-      user.value.role = ''
+      // user.value.role = ''
 
       sessionStorage.removeItem('user')
       sessionStorage.removeItem('token')
@@ -36,7 +36,7 @@ export const useStore = defineStore('main', ()=>{
       return token.value
     }
     const login = ()=>{
-        axios.post('http://127.0.0.1:4523/m1/6731413-6442637-default/login',)
+        axios.post('http://127.0.0.1:4523/m2/6751473-6462932-default/320709040',)
         .then(res=>{
             if(res.data.code == 2000){
                 
