@@ -1,0 +1,5 @@
+<audio id="ou" width="300px" height="200px" src="1.mp3" >
+</audio>
+
+
+document.getElementById("bgmusic").play();

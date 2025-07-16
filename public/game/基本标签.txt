@@ -1,0 +1,59 @@
+Better Luck Tomorrow
+
+<html> 主标签
+<head> 网页头部(控制代码)
+<body> 网页内容体
+
+<title> 网页在浏览器上显示的标题
+<style> 调整内容样式
+
+<h1>~<h6>标题(文字加粗)
+<span>分隔文字用(区分专门调整的文字)
+<img>显示图片
+<a>跳到其他页面
+
+播放音乐
+<audio width="420px" height="300px" autoplay loop>
+	  <source src="" type="audio/mp3">
+</audio>
+
+如果你对颜色样式有要求
+color:red 文字颜色
+letter-spacing 文字间距
+width 宽度
+height 高度
+background-color 背景颜色
+background-image 背景图片
+border-radius:边框圆弧
+box-shadow:20px 20px 10px 边框阴影
+:hover 鼠标移动过的时候
+
+动画:
+transform:
+	scale(2,2)--高和宽都放大一倍
+    rotate(360deg)--旋转360度
+	
+transition:all 1s ease-in-out;	所有的设置都生效 动画时间花1秒钟 效果是开始和结束慢中间快
+
+动画扩充知识:
+其他效果:transform: rotate(旋转) | scale(放大) | skew(30deg,10deg)(扭曲) | translate(位移) |matrix;
+transform-origin(25%,75%)：旋转时候控制中心点
+-------------------
+@keyframes myfirst
+{
+0%   {background: red; left:0px; top:0px;}
+25%  {background: yellow; left:200px; top:0px;}
+50%  {background: blue; left:200px; top:200px;}
+75%  {background: green; left:0px; top:200px;}
+100% {background: red; left:0px; top:0px;}
+}
+
+animation: myfirst 5s linear 2s infinite alternate;
+含义
+animation-name: myfirst;
+animation-duration: 5s;/*动画持续时间*/
+animation-timing-function: linear;/*播放效果*/
+animation-delay: 2s;/*延迟时间*/
+animation-iteration-count: infinite;/*播放次数,infinite是无限次*/
+animation-direction: alternate;/*否在下一周期逆向地播放 normal,alternate
+animation-play-state: running;/*运行还是暂停*/

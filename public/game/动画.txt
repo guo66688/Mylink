@@ -1,0 +1,45 @@
+
+旋转
+transform:rotate(7deg);
+transform:scale(2,2);
+transform:scale(2,2) rotate(360deg)
+过渡:
+transition:all 1s ease-in-out;
+
+
+
+
+.goright{/*向右的时候*/
+	      transform:rotateY(180deg);
+	   }
+	   .goleft{/*向左的时候*/
+	      transform:rotateY(0deg);
+	   }
+	   .zd{
+	     animation:abc 0.05s 0s 5  
+	   }
+	    @keyframes abc{
+		0% {	
+			transform:translate(0px,0px);
+		 }	
+		 25%{
+		   transform:translate(0px,5px)
+		 }
+		 50%{
+		   transform:translate(5px,5px)
+		 }
+		 75%{
+		   transform:translate(5px,0px)
+		 }
+		 100% {	
+			transform:translate(0px,0px)
+		 }	
+		}
+
+
+
+window.onload=function(){
+	       document.getElementById("win").addEventListener('animationend',function(){  		
+		      this.classList.remove('zd');  
+	      }); 	
+	  };

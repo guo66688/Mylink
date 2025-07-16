@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+    #main {
+      width: 800px;
+      height: 600px;
+      background-color: black;
+      color: white;
+      text-align: center;
+      margin: 0px auto;
+      position: relative;
+      overflow: hidden;
+      background-image: url(imgs/timg2.jpg);
+    }
+
+    #startBtn {
+      line-height: 40px;
+      width: 100px;
+      border: 6px solid rgb(123, 86, 225);
+      display: block;
+      background-color: rgb(120, 195, 216);
+      border-radius: 20px;
+      color: orange;
+      font-weight: 900;
+    }
+
+    #startBtn:hover {
+      background-color: orange;
+      color: black;
+      border: 6px solid black;
+      cursor: pointer;
+    }
+
+    #girl {
+      width: 80px;
+      height: 80px;
+      position: absolute;
+      top: 500px; /* 大地和天空有关*/
+      left: 400px;
+      display: block;
+    }
+
+    #star {
+      width: 80px;
+      height: 80px;
+      position: absolute;
+      top: 0px;
+      left: 400px;
+    }
+
+    .zd {
+      animation: xx 0.02s ease-in-out 10
+    }
+
+    @keyframes xx {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      50% {
+        transform: rotate(1deg);
+      }
+
+      100% {
+        transform: rotate(0px);
+      }
+    }
+
+
+    #b_yellow {
+      width: 200px;
+      height: 25px;
+      background-color: red;        /* 红色底层 */
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      border-radius: 20px;
+      border: 1px solid darkred;    /* 深红边框 */
+      overflow: hidden;
+    }
+
+    #b_red {
+      width: 100%;
+      line-height: 25px;
+      background-color: darkred;    /* 深红填充 */
+      border-radius: 10px 0 0 10px;
+      color: white;                 /* 文字白色 */
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="main">
+    <!-- <button onclick="window.location.href='/'" style="position:absolute;left:20px;top:20px;z-index:9999;">← 返回主页</button> -->
+    <span id="startBtn" onclick="startGame()">START</span>
+    <span id="num">0</span>
+    <div id="b_yellow">
+      <div id="b_red">100</div>
+    </div>
+    <img src="imgs/girl.gif" id="girl" />
+    <img src="imgs/star.gif" id="star" />
+    <audio id="audio" src="mp3/t.mp3"></audio>
+  </div>
+
+  <script>
+    let girl = document.getElementById("girl");
+    let star = document.getElementById("star");
+    let num = document.getElementById("num");
+    let audio = document.getElementById("audio")
+    let main = document.getElementById("main")
+    let b_red = document.getElementById("b_red")
+    let score = 0;
+    let star_top = 0;
+    let boole = 100;
+    main.addEventListener('animationend', function () {
+      this.classList.remove('zd');
+    });
+
+    function startGame() {
+      window.setInterval(move, 100)
+    }
+
+
+
+    function move() {
+        
+      star_top += 20;
+      star.style.top = star_top + "px";
+      if (star_top > 600) {
+        star_top = 0;
+        star.style.left = parseInt(Math.random() * 720) + "px";
+        boole-=10;
+        boole = boole<0?0:boole;
+        b_red.innerHTML = boole;//更新计分板
+        b_red.style.width = boole + "%";
+
+      }
+
+      if (isTouch(girl, star)) {
+        main.classList.add("zd");
+        audio.play();
+        score += 2;//接住星星就加分
+       
+        num.innerHTML = score;
+
+        star_top = 0;
+        star.style.left = parseInt(Math.random() * 720) + "px";
+        //alert("碰到了");
+      }
+    }
+
+    let girl_left = 400;
+    document.onkeydown = function (e) {
+      //alert(e.keyCode)
+      switch (e.keyCode) {
+        case 37:
+          girl_left -= 10;
+          if (girl_left < 0)
+            girl_left = 720;
+          break;
+        case 39:
+          girl_left += 10;
+          if (girl_left >= 720)
+            girl_left = 0;
+          break;
+        default: break;
+      }
+      girl.style.left = girl_left + "px";
+    }
+
+    function getCss(ele, css) {
+      return parseInt(window.getComputedStyle(ele, null)[css]);
+    }
+
+    //碰撞
+    function isTouch(ele_a, ele_b) {
+      var manleft = getCss(ele_a, "left");
+      var manwidth = getCss(ele_a, "width");
+      var mantop = getCss(ele_a, "top");
+      var manheight = getCss(ele_a, "height");
+
+      var rockleft = getCss(ele_b, "left");
+      var rockwidth = getCss(ele_b, "width");
+      var rocktop = getCss(ele_b, "top");
+      var rockHeight = getCss(ele_b, "height");
+
+      return Math.abs(manleft - rockleft) < (manwidth / 2 + rockwidth / 2)
+        && Math.abs(mantop - rocktop) < (manheight / 2 + rockHeight / 2);
+    }
+  </script>
+</body>
+
+</html>

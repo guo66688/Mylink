@@ -1,0 +1,70 @@
+获取内联样式表的样式
+function getCss(ele,css)
+	  {
+	    return parseInt(window.getComputedStyle(ele,null)[css]);
+	  }
+
+
+//碰撞
+
+
+
+
+          function isTouch(ele_a,ele_b)
+	  {
+
+	         var manLeft=getCss(ele_a,"left");
+		 var manWidth=getCss(ele_a,"width");
+		 var manTop=getCss(ele_a,"top");
+		 var manHeight=getCss(ele_a,"height");
+		 
+		 var rockLeft=getCss(ele_b,"left");
+		 var rockWidth=getCss(ele_b,"width");
+		 var rockTop=getCss(ele_b,"top");
+		 var rockHeight=getCss(ele_b,"height");
+		 
+		 
+		return 	Math.abs(manLeft-rockLeft)<(manWidth/2+rockWidth/2)
+		&& Math.abs(manTop-rockTop)<(manHeight/2+rockHeight/2);
+
+		  //撞到了
+		  
+	  }
+
+
+另一种算法:
+   
+          function isTouch(ele_a,ele_b)
+	  {
+	     var manLeft=getCss(ele_a,"left");
+		 var manWidth=getCss(ele_a,"width");
+		 var manTop=getCss(ele_a,"top");
+		 var manHeight=getCss(ele_a,"height");
+		 
+		 var rockLeft=getCss(ele_b,"left");
+		 var rockWidth=getCss(ele_b,"width");
+		 var rockTop=getCss(ele_b,"top");
+		 var rockHeight=getCss(ele_b,"height");
+		 
+		 return ((manLeft+manWidth)>rockLeft&&manLeft<(rockLeft+rockWidth)
+		     && ((manTop+manHeight)>rockTop&&manTop<(rockTop+rockHeight)));
+		  
+	  }
+
+第三种算法:
+
+		  var rock_x=parseInt(getCss(rr,"left"));
+		  var rock_w=rock_x+80;
+		  var girl_x=parseInt(getCss(e_girl,"left"));
+		  var girl_w=girl_x+80;
+		  
+		  var rock_y=parseInt(getCss(rr,"top"));
+		  var rock_h=rock_y+80;
+		  var girl_y=parseInt(getCss(e_girl,"top"));
+		  var girl_h=girl_y+80;
+		  
+		  if((Math.max(rock_x,rock_w,girl_x,girl_w)-Math.min(rock_x,rock_w,girl_x,girl_w)<160)
+		   &&(Math.max(rock_y,rock_h,girl_y,girl_h)-Math.min(rock_y,rock_h,girl_y,girl_h)<160))
+		   {
+			 //撞到了
+		   }

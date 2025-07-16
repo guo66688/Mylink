@@ -1,17 +1,21 @@
 <template>
-  <el-row class="title-row" align="middle">
-    <el-col :span="6" class="title-left">
-      <slot name="left"></slot>
-    </el-col>
-    <el-col :span="12" class="title-center">
-      <h2>{{ title }}</h2>
-    </el-col>
-    <el-col :span="6" class="title-right">
-      <slot name="right"></slot>
-    </el-col>
-  </el-row>
-  <el-divider />
+  <div>
+    <el-divider />
+    <el-row class="title-row" align="middle">
+      <el-col :span="6" class="title-left">
+        <slot name="left"></slot>
+      </el-col>
+      <el-col :span="12" class="title-center">
+        <h2>{{ title }}</h2>
+      </el-col>
+      <el-col :span="6" class="title-right">
+        <slot name="right"></slot>
+      </el-col>
+    </el-row>
+    <el-divider />
+  </div>
 </template>
+
 
 <script setup>
 const props = defineProps({

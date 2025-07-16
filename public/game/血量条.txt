@@ -1,0 +1,9 @@
+<!--血量-->
+	   <div id="bb" style="width:250px;height:20px;background:yellow;float:right;margin:10px;border-radius:15px">
+	     <div id="blood" style="width:250px;height:100%;background:red;float:right;border-radius:15px;text-align:center;color:#fff;line-height:20px">100</div>
+	   </div>
+
+
+//碰撞后调整血量
+  blood-=10;
+  bd.style.width=blood+"%";

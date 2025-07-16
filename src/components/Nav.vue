@@ -22,6 +22,7 @@
         <el-menu-item index="13">AI 厨师</el-menu-item>
         <el-menu-item index="14">AI 图片生成</el-menu-item>
       </el-sub-menu>
+      <el-menu-item index="20">🎮 游戏Demo</el-menu-item>
 
       <!-- 右侧菜单区 -->
       <div class="flex-grow"></div>
@@ -69,6 +70,8 @@ const handleSelect = (key: string) => {
     case '12': router.push('/doctor'); break
     case '13': router.push('/cooker'); break
     case '14': router.push('/imgCreate'); break
+    case '20': window.open('/game/game.html', '_blank'); break
+
   }
 }
 </script>
