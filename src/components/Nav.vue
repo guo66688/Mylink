@@ -8,6 +8,7 @@
     >
       <!-- 左侧主菜单区 -->
       <el-menu-item index="1">🏠 Home</el-menu-item>
+      <el-menu-item index="15">📰 今日头条</el-menu-item>
       <el-menu-item index="2">📋 列表</el-menu-item>
       <el-menu-item index="5">➕ 添加联系人</el-menu-item>
       <el-menu-item index="6" v-if="checkRole('/report')">📊 报表</el-menu-item>
@@ -23,7 +24,7 @@
       </el-sub-menu>
 
       <!-- 右侧菜单区 -->
-      <div class="flex-grow"></div> <!-- 占位自动撑开 -->
+      <div class="flex-grow"></div>
       <el-sub-menu index="8" class="right-align">
         <template #title>
           👤 我的
@@ -53,10 +54,10 @@ function checkRole(path) {
   return roles.includes(store.user.role)
 }
 
-// 新增 AI 路由的跳转
 const handleSelect = (key: string) => {
   switch (key) {
     case '1': router.push('/home'); break
+    case '15': router.push('/homes'); break  // 今日头条路由
     case '2': router.push('/list'); break
     case '3': router.push('/login'); break
     case '4': router.push('/register'); break

@@ -1,7 +1,10 @@
 <template>
-  <Nav></Nav>
-  <router-view />
+  <div>
+    <Nav />
+    <router-view />
+  </div>
 </template>
+
 <script setup>
 import Nav from '@/components/Nav.vue'
 import { onMounted } from 'vue';

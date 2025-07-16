@@ -8,7 +8,7 @@ import ListView from '../views/ListVIew.vue'   // 注意：ListVIew.vue 的 I �
 import AddView from '../views/AddView.vue'
 import ReportView from '../views/ReportView.vue'
 import Report2View from '../views/Report2View.vue'
-
+import Home from '../views/Home.vue'
 // pages 目录
 import cooker from "../views/cooker.vue";
 import doctor from "../views/doctor.vue";
@@ -24,6 +24,11 @@ const routes = [
       meta:{
         requireAuth:true
       }
+  },
+  {
+      path: '/homes',
+      name: 'homes',
+      component: Home
   },
   // pages 路由
   {
